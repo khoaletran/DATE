@@ -26,14 +26,24 @@ function loadFoods() {
 function goToStep2() {
     userName = document.getElementById('name').value.trim();
     userEmail = document.getElementById('email').value.trim();
-    if (userName && userEmail) {
-        document.getElementById('step1').style.display = 'none';
-        document.getElementById('step2').style.display = 'block';
-        loadFoods();
-    } else {
+
+    const gmailRegex = /^[a-zA-Z0-9._%+-]+@gmail\.com$/;
+
+    if (!userName || !userEmail) {
         alert('Điền đầy đủ thông tin nhen Người Đẹp!');
+        return;
     }
+
+    if (!gmailRegex.test(userEmail)) {
+        alert('Email phải là Gmail nhen Người Đẹp! Ví dụ: example@gmail.com');
+        return;
+    }
+
+    document.getElementById('step1').style.display = 'none';
+    document.getElementById('step2').style.display = 'block';
+    loadFoods();
 }
+
 
 function renderFoods() {
     const foodList = document.getElementById('foodList');
@@ -81,6 +91,11 @@ function sendMail() {
 
     if (selectedDateTime <= now) {
         alert('Chọn ngày giờ tương lai nhen Người Đẹp! Đừng chọn quá khứ nha.');
+        return;
+    }
+
+    if (location.length < 5) {
+        alert('Địa điểm phải có ít nhất 5 ký tự nhen Người Đẹp!');
         return;
     }
 
