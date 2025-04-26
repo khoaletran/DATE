@@ -55,13 +55,13 @@ Dự án được xây dựng bởi **Trần Lê Khoa**, sinh viên ngành **Cô
    Đi ăn Pizza|IMG/pizza.png
   ```
 
-## Gửi Email
+## Gửi Email 📧
 
 - Ứng dụng sử dụng **EmailJS** để gửi email xác nhận.
 - Thay đổi địa chỉ email người nhận trong mã nguồn nếu cần.
 - Cấu hình khóa API và template email trong **EmailJS Dashboard**.
 
-## Công Nghệ Sử Dụng
+## Công Nghệ Sử Dụng 🖥️
 
 - **HTML**: Xây dựng giao diện.
 - **CSS**: Trang trí và tạo layout.
@@ -69,8 +69,12 @@ Dự án được xây dựng bởi **Trần Lê Khoa**, sinh viên ngành **Cô
 - **EmailJS**: Gửi email xác nhận.
 - **File TXT**: Lưu trữ danh sách món ăn.
 
-## Liên Hệ
+## Liên Hệ 📞
 
 Nếu có câu hỏi, muốn đóng góp, hoặc gặp vấn đề, liên hệ:
 
-- **Email**: khoaletran709@gmail.com
+** 🔗 Liên kết cá nhân
+- 📘 [Facebook](https://www.facebook.com/khoa.le.tran21)
+- 📧 [Email](mailto:khoaletran709@gmail.com)
+- 🐙 [GitHub](https://github.com/khoaletran)
+- 😊 [WebsiteProfile](https://khoaletran.github.io/Profile/)
