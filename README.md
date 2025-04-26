@@ -73,7 +73,7 @@ Dự án được xây dựng bởi **Trần Lê Khoa**, sinh viên ngành **Cô
 
 Nếu có câu hỏi, muốn đóng góp, hoặc gặp vấn đề, liên hệ:
 
-** 🔗 Liên kết cá nhân
+🔗 Liên kết cá nhân
 - 📘 [Facebook](https://www.facebook.com/khoa.le.tran21)
 - 📧 [Email](mailto:khoaletran709@gmail.com)
 - 🐙 [GitHub](https://github.com/khoaletran)
