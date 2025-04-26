@@ -1,0 +1,4 @@
+Xem Phim|IMG/xemphim.png
+Đi ăn Jollibee|IMG/Jollibee.png
+Đi ăn Bánh kem|IMG/banhngot.jpg
+Đi ăn Pizza|IMG/pizza.png

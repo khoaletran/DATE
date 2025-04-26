@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Hẹn Hò Cùng Nhau</title>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="IMG/logo.jpg" type="image/x-icon">
+</head>
+<body>
+
+<div class="container">
+    <div id="step1">
+        <h2>Chào Người Đẹp 🥰</h2>
+        <input type="text" id="name" placeholder="Nhập tên của em nè...">
+        <input type="email" id="email" placeholder="Nhập Gmail để anh liên lạc nha...">
+        <button onclick="goToStep2()">Bước tiếp theo nhen 💌</button>
+    </div>
+
+    <div id="step2">
+        <h2>Chọn hoạt động tụi mình sẽ cùng nhau nè 🎉</h2>
+        <div class="food-list" id="foodList"></div>
+        <button onclick="goToStep3()">Đi tiếp nào ➡️</button>
+    </div>
+
+    <div id="step3">
+        <h2>Chốt lịch hẹn hò thôi! 📅✨</h2>
+        <input type="date" id="date" placeholder="Chọn ngày yêu thích nè">
+        <input type="time" id="time" placeholder="Chọn giờ tụi mình gặp nhau">
+        <input type="text" id="location" placeholder="Nhập địa điểm để anh rước nhé.....">
+        <button onclick="sendMail()">Gửi lời mời yêu thương 💖</button>
+    </div>
+</div>
+
+<script src="app.js"></script>
+
+</body>
+</html>
