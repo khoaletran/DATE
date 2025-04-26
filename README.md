@@ -8,10 +8,10 @@ Dự án được xây dựng bởi **Trần Lê Khoa**, sinh viên ngành **Cô
 
 ## Các Tính Năng Chính
 
-- **Đăng nhập**: Nhập họ tên và email.
-- **Chọn món ăn**: Lựa chọn món ăn yêu thích từ danh sách đa dạng.
-- **Chọn thời gian và địa điểm**: Đặt thời gian và địa điểm cho buổi hẹn.
-- **Gửi email xác nhận**: Hệ thống gửi thông tin hẹn hò qua email.
+- **Đăng nhập**: Nhập họ tên và email.💌
+- **Chọn món ăn**: Lựa chọn hoạt động yêu thích từ danh sách đa dạng.🍕
+- **Chọn thời gian và địa điểm**: Đặt thời gian và địa điểm cho buổi hẹn.⏰📍
+- **Gửi email xác nhận**: Hệ thống gửi thông tin hẹn hò qua email.📧
 
 ## Hướng Dẫn Cài Đặt
 
@@ -49,10 +49,10 @@ Dự án được xây dựng bởi **Trần Lê Khoa**, sinh viên ngành **Cô
 - Sửa file `data.txt` để thêm món ăn mới. Định dạng: `name|image_url`.
   Ví dụ:
   ```
-  Pizza tình yêu|https://i.imgur.com/1KegWPz.jpg
-  Sushi đôi lứa|https://i.imgur.com/b6rYn1U.jpg
-  Bánh kem ngọt ngào|https://i.imgur.com/FxxM8XW.jpg
-  Mì Ý lãng mạn|https://i.imgur.com/bK0N0sB.jpg
+   Xem Phim|IMG/xemphim.png
+   Đi ăn Jollibee|IMG/Jollibee.png
+   Đi ăn Bánh kem|IMG/banhngot.jpg
+   Đi ăn Pizza|IMG/pizza.png
   ```
 
 ## Gửi Email
