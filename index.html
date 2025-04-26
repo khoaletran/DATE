@@ -24,12 +24,30 @@
     </div>
 
     <div id="step3">
-        <h2>Chốt lịch hẹn hò thôi! 📅✨</h2>
+        <h2>Chốt lịch thôi nèe! 📅✨</h2>
         <input type="date" id="date" placeholder="Chọn ngày yêu thích nè">
         <input type="time" id="time" placeholder="Chọn giờ tụi mình gặp nhau">
         <input type="text" id="location" placeholder="Nhập địa điểm để anh rước nhé.....">
-        <button onclick="sendMail()">Gửi lời mời yêu thương 💖</button>
+        <button onclick="sendMail()">Xác Nhận💖</button>
     </div>
+
+    <div id="videoModal" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        
+        <div class="text-overlay">
+          <h2>Cảm ơn Người Đẹp</h2>
+          <h2>đã dành chút thời gian 💖</h2>
+          <h3>Đây là một phần quà nhỏ dành cho Người Đẹp 🥰</h3>
+        </div>
+    
+        <video id="loveVideo" controls autoplay>
+          <source src="IMG/video.mp4" type="video/mp4">
+          Trình duyệt của bạn không hỗ trợ video này.
+        </video>
+      </div>
+    </div>
+    
 </div>
 
 <script src="app.js"></script>

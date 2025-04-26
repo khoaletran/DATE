@@ -5,17 +5,20 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
+    padding: 10px;
 }
+
 .container {
     background: white;
-    padding: 40px;
+    padding: 30px 20px;
     border-radius: 20px;
-    box-shadow: 0 0 20px pink;
+    box-shadow: 0 0 15px pink;
     text-align: center;
-    width: 90%;
+    width: 100%;
     max-width: 400px;
 }
+
 input, button, select {
     width: 80%;
     margin: 10px 0;
@@ -24,41 +27,148 @@ input, button, select {
     border-radius: 10px;
     font-size: 16px;
 }
+
 button {
     background: #ff66a3;
     color: white;
     cursor: pointer;
-    transition: background 0.3s;
+    transition: background 0.3s, transform 0.2s;
 }
+
 button:hover {
     background: #ff3385;
+    transform: scale(1.03);
 }
+
 .food-list {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 15px;
     margin-top: 20px;
 }
+
 .food-item {
-    border: 5px solid #ffcce0;
+    border: 4px solid #ffcce0;
     border-radius: 10px;
     overflow: hidden;
     cursor: pointer;
-    transition: transform 0.3s, border 0.3s;
+    transition: transform 0.3s, border-color 0.3s;
 }
+
 .food-item img {
     width: 100%;
     height: 100px;
     object-fit: cover;
     border-radius: 10px;
-    padding: 10px;
+    padding: 5px;
 }
+
 .food-item:hover {
     transform: scale(1.05);
     border-color: #ff66a3;
 }
+
 .selected {
     border-color: #ff3385 !important;
     box-shadow: 0 0 10px #ff3385;
 }
-#step2, #step3 { display: none; }
+
+/* Step ẩn */
+#step2, #step3 {
+    display: none;
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+.modal-content {
+    background-color: #fff;
+    position: relative;
+    width: 95%;
+    max-width: 350px;
+    border-radius: 15px;
+    overflow: hidden;
+    text-align: center;
+    animation: fadeIn 0.5s ease;
+    box-shadow: 0px 5px 15px rgba(0,0,0,0.3);
+}
+
+#loveVideo {
+    width: 100%;
+    border-radius: 0 0 15px 15px;
+    margin-top: 10px;
+}
+
+.text-overlay {
+    padding: 15px 10px 0;
+    color: #ff4da6;
+    font-family: 'Poppins', sans-serif;
+}
+
+.text-overlay h2 {
+    font-size: 20px;
+    margin: 0 0 5px;
+}
+
+.text-overlay h3 {
+    font-size: 15px;
+    font-weight: normal;
+    margin: 0;
+}
+
+.close {
+    position: absolute;
+    top: 8px;
+    right: 12px;
+    font-size: 24px;
+    color: #ff4da6;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover {
+    color: red;
+    transform: scale(1.2);
+}
+
+/* Animation modal */
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.8); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+/* Mobile Responsive */
+@media (max-width: 480px) {
+    .container {
+        padding: 25px 15px;
+    }
+
+    .modal-content {
+        width: 95%;
+        max-width: 320px;
+    }
+
+    .text-overlay h2 {
+        font-size: 18px;
+    }
+
+    .text-overlay h3 {
+        font-size: 14px;
+    }
+
+    .close {
+        font-size: 22px;
+    }
+}

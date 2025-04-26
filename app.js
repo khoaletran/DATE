@@ -66,6 +66,7 @@ function goToStep3() {
 }
 
 function sendMail() {
+    openModal();
     const date = document.getElementById('date').value;
     const time = document.getElementById('time').value;
     const location = document.getElementById('location').value.trim();
@@ -102,12 +103,18 @@ function sendMail() {
         console.log('SUCCESS', response);
         return emailjs.send('khoaletran_709', 'template_ixeq81a', paramsMain);
     })
-    .then((responseMain) => {
-        console.log('SUCCESS', responseMain);
-        location.reload();
-    })
     .catch((error) => {
         console.error('FAILED', error);
     });
 }
 
+function openModal() {
+    document.getElementById('videoModal').style.display = 'flex';
+    document.getElementById('loveVideo').play();
+}
+
+function closeModal() {
+    document.getElementById('videoModal').style.display = 'none';
+    document.getElementById('loveVideo').pause();
+    document.getElementById('loveVideo').currentTime = 0; 
+}
