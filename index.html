@@ -9,11 +9,13 @@
 </head>
 <body>
 
-<div class="container">
+  <div class="container">
     <div id="step1">
         <h2>Chào Người Đẹp 🥰</h2>
-        <input type="text" id="name" placeholder="Nhập tên của em nè...">
-        <input type="email" id="email" placeholder="Nhập Gmail để anh liên lạc nha...">
+        <input type="text" id="name" placeholder="Nhập tên của em nè..." onblur="validateName()">
+        <span id="nameError" class="error-message"></span>
+        <input type="email" id="email" placeholder="Nhập Gmail để anh liên lạc nha..." onblur="validateEmail()">
+        <span id="emailError" class="error-message"></span>
         <button onclick="goToStep2()">Bước tiếp theo nhen 💌</button>
     </div>
 
@@ -25,9 +27,12 @@
 
     <div id="step3">
         <h2>Chốt lịch thôi nèe! 📅✨</h2>
-        <input type="date" id="date" placeholder="Chọn ngày yêu thích nè">
-        <input type="time" id="time" placeholder="Chọn giờ tụi mình gặp nhau">
-        <input type="text" id="location" placeholder="Nhập địa điểm để anh rước nhé.....">
+        <input type="date" id="date" placeholder="Chọn ngày yêu thích nè" onchange="validateDate()">
+        <span id="dateError" class="error-message"></span>
+        <input type="time" id="time" placeholder="Chọn giờ tụi mình gặp nhau" onblur="validateTime()">
+        <span id="timeError" class="error-message"></span>
+        <input type="text" id="location" placeholder="Nhập địa điểm để anh rước nhé....." onblur="validateLocation()">
+        <span id="locationError" class="error-message"></span>
         <button onclick="sendMail()">Xác Nhận💖</button>
     </div>
 

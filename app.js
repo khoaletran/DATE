@@ -3,8 +3,151 @@
 })();
 
 let userName = '', userEmail = '', selectedFood = '';
-
 let foodArray = [];
+// =================== Các hàm kiểm tra riêng ===================
+
+function isValidName(name) {
+    return name.trim().length > 0;
+}
+
+function isValidGmail(email) {
+    const gmailRegex = /^[a-zA-Z0-9._%+-]+@gmail\.com$/;
+    return gmailRegex.test(email.trim());
+}
+
+function isValidLocation(location) {
+    return location.trim().length >= 5;
+}
+
+function isValidDate(dateString) {
+    if (!dateString) return false;
+
+    const today = new Date();
+    const selectedDate = new Date(dateString);
+
+    today.setHours(0,0,0,0);
+    selectedDate.setHours(0,0,0,0);
+
+    return selectedDate > today;
+}
+
+function isFutureDateTime(date, time) {
+    const selectedDateTime = new Date(`${date}T${time}`);
+    const now = new Date();
+    return selectedDateTime > now;
+}
+
+function isValidTimeSA(timeString) {
+    if (!timeString) return false;
+
+    const [hours, minutes] = timeString.split(':').map(Number);
+
+    if (isNaN(hours) || isNaN(minutes)) return false;
+
+    return hours >= 8;
+}
+
+function isValidTimeCH(timeString) {
+    if (!timeString) return false;
+
+    const [hours, minutes] = timeString.split(':').map(Number);
+
+    if (isNaN(hours) || isNaN(minutes)) return false;
+
+    return hours <= 21;
+}
+
+// =================== Các hàm kiểm tra cho onblur ===================
+
+function validateName() {
+    const name = document.getElementById('name').value.trim();
+    const nameError = document.getElementById('nameError');
+    
+    if (!isValidName(name)) {
+        nameError.innerText = 'Ê, sao quên nhập tên rồi? Vào điền giúp anh đi nha!';
+        nameError.style.display = 'block';
+        return false;
+    } else {
+        nameError.innerText = 'Ê, Tên gì mà đẹp thế 😘!';
+        nameError.style.display = 'block';
+        return true;
+    }
+}
+
+function validateEmail() {
+    const email = document.getElementById('email').value.trim();
+    const emailError = document.getElementById('emailError');
+    
+    if (!isValidName(email) || !isValidGmail(email)) {
+        emailError.innerText = 'Email phải là Gmail hợp lệ đấy, người đẹp (ví dụ: example@gmail.com)!';
+        emailError.style.display = 'block';
+        return false;
+    } else {
+        emailError.style.display = 'none';
+        return true;
+    }
+}
+
+function validateDate() {
+    const date = document.getElementById('date').value.trim();
+    const dateError = document.getElementById('dateError');
+    
+    if (!isValidName(date)) {
+        dateError.innerText = 'Chọn ngày đi nha, đừng để trống mà, người đẹp!';
+        dateError.style.display = 'block';
+        return false;
+    } else if (!isValidDate(date)) {
+        dateError.innerText = 'Chúng ta không thể quay về quá khứ đâu !';
+        dateError.style.display = 'block';
+        return false;
+    } else {
+        dateError.style.display = 'none';
+        return true;
+    }
+}
+
+function validateTime() {
+    const time = document.getElementById('time').value.trim();
+    const timeError = document.getElementById('timeError');
+    
+    if (!isValidName(time)) {
+        timeError.innerText = 'Cần chọn giờ chứ, đừng để trống nha cô gái xinh đẹp!';
+        timeError.style.display = 'block';
+        return false;
+    }
+    else if(!isValidTimeSA(time)){
+        timeError.innerText = 'Giờ này hoa chưa nở đâu!';
+        timeError.style.display = 'block';
+        return false;
+    }
+    else if(!isValidTimeCH(time)){
+        timeError.innerText = 'Giờ này ai mà mở cửa nữa đâu!';
+        timeError.style.display = 'block';
+        return false;
+    } else {
+        timeError.innerText = 'Giờ này tuyệt nhất rồi nha!';
+        timeError.style.display = 'block';
+        return true;
+    }
+}
+
+function validateLocation() {
+    const location = document.getElementById('location').value.trim();
+    const locationError = document.getElementById('locationError');
+    
+    if (!isValidLocation(location)) {
+        locationError.innerText = 'Địa điểm phải dài hơn 5 ký tự đấy nha, người đẹp!';
+        locationError.style.display = 'block';
+        return false;
+    } else {
+        locationError.innerText = 'Đợi đó anh qua rước người đẹp!';
+        locationError.style.display = 'block';
+        return true;
+    }
+}
+
+
+// =================== Các hàm xử lý ===================
 
 function loadFoods() {
     fetch('data.txt')
@@ -27,23 +170,23 @@ function goToStep2() {
     userName = document.getElementById('name').value.trim();
     userEmail = document.getElementById('email').value.trim();
 
-    const gmailRegex = /^[a-zA-Z0-9._%+-]+@gmail\.com$/;
+    let valid = true;
 
-    if (!userName || !userEmail) {
-        alert('Điền đầy đủ thông tin nhen Người Đẹp!');
-        return;
+    if (!validateName()) {
+        valid = false;
     }
 
-    if (!gmailRegex.test(userEmail)) {
-        alert('Email phải là Gmail nhen Người Đẹp! Ví dụ: example@gmail.com');
-        return;
+    if (!validateEmail()) {
+        valid = false;
     }
 
+    if (!valid) {
+        return; 
+    }
     document.getElementById('step1').style.display = 'none';
     document.getElementById('step2').style.display = 'block';
     loadFoods();
 }
-
 
 function renderFoods() {
     const foodList = document.getElementById('foodList');
@@ -76,31 +219,21 @@ function goToStep3() {
 }
 
 function sendMail() {
-    openModal();
+    
     const date = document.getElementById('date').value;
     const time = document.getElementById('time').value;
     const location = document.getElementById('location').value.trim();
 
-    if (!date || !time || !location) {
-        alert('Điền đủ thông tin hẹn hò nhen Người Đẹp!');
-        return;
-    }
+    let valid = true;
 
-    const selectedDateTime = new Date(`${date}T${time}`);
-    const now = new Date();
-
-    if (selectedDateTime <= now) {
-        alert('Chọn ngày giờ tương lai nhen Người Đẹp! Đừng chọn quá khứ nha.');
-        return;
-    }
-
-    if (location.length < 5) {
-        alert('Địa điểm phải có ít nhất 5 ký tự nhen Người Đẹp!');
-        return;
+    if (!validateDate() || !validateLocation() || !validateTime()) {
+        valid = false;
+        alert('Thông tin không hợp lệ, vui lòng kiểm tra lại');
+        return; 
     }
 
     const bookingTime = `${date} lúc ${time}`;
-
+    openModal();
     const params = {
         user_name: userName,
         selected_food: selectedFood,
@@ -110,7 +243,6 @@ function sendMail() {
         from_name: 'Chàng trai bí ẩn',
     };
 
-
     const paramsMain = {
         user_name: userName,
         selected_food: selectedFood,
@@ -119,7 +251,6 @@ function sendMail() {
         user_email: 'khoaletran709@gmail.com',
         from_name: 'Chàng trai bí ẩn',
     };
-
 
     emailjs.send('khoaletran_709', 'template_ixeq81a', params)
     .then((response) => {
