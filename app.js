@@ -76,6 +76,14 @@ function sendMail() {
         return;
     }
 
+    const selectedDateTime = new Date(`${date}T${time}`);
+    const now = new Date();
+
+    if (selectedDateTime <= now) {
+        alert('Chọn ngày giờ tương lai nhen Người Đẹp! Đừng chọn quá khứ nha.');
+        return;
+    }
+
     const bookingTime = `${date} lúc ${time}`;
 
     const params = {
