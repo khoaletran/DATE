@@ -28,6 +28,11 @@ input, button, select {
     font-size: 16px;
 }
 
+.gif {
+    width: 60%;
+    border-radius: 10px;
+}
+
 .error-message {
     color: red;
     font-size: 16px;
