@@ -22,7 +22,6 @@ Dự án được xây dựng bởi **Trần Lê Khoa**, sinh viên ngành **Cô
 
 2. **Cài đặt công cụ cần thiết:**
    - Cài đặt **Visual Studio Code** hoặc IDE bất kỳ.
-   - Cài đặt **Node.js** (nếu sử dụng công cụ phụ trợ).
 
 3. **Mở dự án:**
    - Mở thư mục dự án trong IDE.
@@ -36,7 +35,7 @@ Dự án được xây dựng bởi **Trần Lê Khoa**, sinh viên ngành **Cô
    - Nhập họ tên và email, nhấn **Tiếp tục**.
 
 2. **Chọn món ăn:**
-   - Chọn món ăn yêu thích từ danh sách.
+   - Chọn món hoạt động thích từ danh sách.
 
 3. **Chọn thời gian và địa điểm:**
    - Điền thời gian và địa điểm cho buổi hẹn.
@@ -67,7 +66,7 @@ Dự án được xây dựng bởi **Trần Lê Khoa**, sinh viên ngành **Cô
 - **CSS**: Trang trí và tạo layout.
 - **JavaScript**: Xử lý logic (đăng nhập, chọn món, gửi email).
 - **EmailJS**: Gửi email xác nhận.
-- **File TXT**: Lưu trữ danh sách món ăn.
+- **File TXT**: Lưu trữ danh sách hoạt động.
 
 ## Liên Hệ 📞
 
