@@ -149,6 +149,47 @@ function validateLocation() {
 
 // =================== Các hàm xử lý ===================
 
+let noClickCount = 0;
+
+function startApp(agree) {
+    const inviteStep = document.getElementById('inviteStep');
+    const mainApp = document.getElementById('mainApp');
+
+    if (agree) {
+        inviteStep.style.display = 'none';
+        mainApp.style.display = 'block';
+    }
+}
+
+function shrinkNo() {
+    const btnNo = document.getElementById('btnNo');
+    const btnOk = document.getElementById('btnOk');
+    noClickCount++;
+
+    
+    const scaleNo = 1 - (noClickCount * 0.2);
+    btnNo.style.transform = `scale(${Math.max(scaleNo, 0.1)})`;
+
+    
+    const scaleOk = 1 + (noClickCount * 0.2);
+    btnOk.style.transform = `scale(${scaleOk})`;
+
+    if (noClickCount >= 4) {
+        const inviteStep = document.getElementById('inviteStep');
+        inviteStep.innerHTML = `
+            <div id="gifContainer">
+                <img src="IMG/sad.gif" alt="sad gif" style="max-width: 100%; height: auto; border-radius: 10px;">
+            </div>
+            <h2>Thôi zậy, hổng ép đâu 🥺</h2>
+        `;
+        const params = {
+            user_email: "khoaletran709@gmail.com",
+        };
+        emailjs.send('khoaletran_709', 'template_jdetxas',params);
+        
+    }
+}
+
 function loadFoods() {
     fetch('data.txt')
         .then(response => response.text())

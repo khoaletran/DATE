@@ -9,25 +9,41 @@
 </head>
 <body>
 
-  <div class="container">
+  <div id="inviteStep" class="container">
+    <div>
+      <img src="IMG/hope.gif" style="max-width: 100%; height: auto; border-radius: 10px;">
+    </div>
+    <h2>Bạn mời Người đẹp đi chơi 1 buổi được nha?</h2>
+    <button id="btnOk" onclick="startApp(true)">OK <br>( Bấm ở đây nè 😊 )</button>
+    <button id="btnNo" onclick="shrinkNo()">Hông 🥲</button>
+  </div>
+
+  <div class="container" id="mainApp" style="display: none;" >
+
     <div id="step1">
       <img src="IMG/hello.gif" class="gif">
         <h2>Chào Người Đẹp 🥰</h2>
-        <input type="text" id="name" placeholder="Nhập tên của em nè..." onblur="validateName()">
+        <input type="text" id="name" placeholder="Nhập tên của em nè..." onblur="validateName()" value="Diễm Hằng Dễ Thương">
         <span id="nameError" class="error-message"></span>
-        <input type="email" id="email" placeholder="Nhập Gmail để anh liên lạc nha..." onblur="validateEmail()">
+        <input type="email" id="email" placeholder="Nhập Gmail để nhập thiệp mời nhaa😊" onblur="validateEmail()">
         <span id="emailError" class="error-message"></span>
         <button onclick="goToStep2()">Bước tiếp theo nhen 💌</button>
     </div>
 
     <div id="step2">
         <h2>Chọn hoạt động tụi mình sẽ cùng nhau nè 🎉</h2>
+        <div>
+          <img src="IMG/choose.gif" style="max-width: 60%; height: auto; border-radius: 10px;">
+        </div>
         <div class="food-list" id="foodList"></div>
         <button onclick="goToStep3()">Đi tiếp nào ➡️</button>
     </div>
 
     <div id="step3">
         <h2>Chốt lịch thôi nèe! 📅✨</h2>
+        <div>
+          <img src="IMG/thanks.gif" style="max-width: 60%; height: auto; border-radius: 10px;">
+        </div>
         <input type="date" id="date" placeholder="Chọn ngày yêu thích nè" onchange="validateDate()">
         <span id="dateError" class="error-message"></span>
         <input type="time" id="time" placeholder="Chọn giờ tụi mình gặp nhau" onblur="validateTime()">
