@@ -306,6 +306,7 @@ function sendMail() {
 function openModal() {
     document.getElementById('videoModal').style.display = 'flex';
     document.getElementById('loveVideo').play();
+    document.getElementById('bg-music').pause();
 }
 
 function closeModal() {
@@ -313,3 +314,8 @@ function closeModal() {
     document.getElementById('loveVideo').pause();
     document.getElementById('loveVideo').currentTime = 0; 
 }
+
+window.addEventListener('click', function() {
+    const audio = document.getElementById("bg-music");
+    audio.play();
+}, { once: true });
