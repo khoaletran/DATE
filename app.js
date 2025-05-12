@@ -167,27 +167,31 @@ function shrinkNo() {
     noClickCount++;
 
     
-    const scaleNo = 1 - (noClickCount * 0.2);
+    const scaleNo = 1 - (noClickCount * 0.05);
     btnNo.style.transform = `scale(${Math.max(scaleNo, 0.1)})`;
 
     
-    const scaleOk = 1 + (noClickCount * 0.2);
+    const scaleOk = 1 + (noClickCount * 0.05);
     btnOk.style.transform = `scale(${scaleOk})`;
 
-    if (noClickCount >= 4) {
-        const inviteStep = document.getElementById('inviteStep');
-        inviteStep.innerHTML = `
-            <div id="gifContainer">
-                <img src="IMG/sad.gif" alt="sad gif" style="max-width: 100%; height: auto; border-radius: 10px;">
-            </div>
-            <h2>Thôi zậy, hổng ép đâu 🥺</h2>
-        `;
-        const params = {
-            user_email: "khoaletran709@gmail.com",
-        };
-        emailjs.send('khoaletran_709', 'template_jdetxas',params);
+    // if (noClickCount >= 4) {
+    //     const inviteStep = document.getElementById('inviteStep');
+    //     inviteStep.innerHTML = `
+    //         <div id="gifContainer">
+    //             <img src="IMG/sad.gif" alt="sad gif" style="max-width: 100%; height: auto; border-radius: 10px;">
+    //         </div>
+    //         <h2>Thôi zậy, hổng ép đâu 🥺</h2>
+    //     `;
+    //     const params = {
+    //         user_email: "khoaletran709@gmail.com",
+    //     };
+    //     emailjs.send('khoaletran_709', 'template_jdetxas',params);
         
+    // }
+    if(noClickCount > 6){
+        btnNo.style.display = 'none';
     }
+    
 }
 
 function loadFoods() {
