@@ -264,25 +264,23 @@ function goToStep3() {
 }
 
 function sendMail() {
-    
-    const date = document.getElementById('date').value;
-    const time = document.getElementById('time').value;
+
     const location = document.getElementById('location').value.trim();
 
-    let valid = true;
-
-    if (!validateDate() || !validateLocation() || !validateTime()) {
-        valid = false;
-        alert('Thông tin không hợp lệ, vui lòng kiểm tra lại');
-        return; 
+    if (!validateLocation()) {
+        alert('Vui lòng nhập địa điểm hợp lệ');
+        return;
     }
 
-    const bookingTime = `${date} lúc ${time}`;
+    // ✅ NGÀY CỐ ĐỊNH NOEL
+    const bookingTime = "25/12/2025";
+
     openModal();
+
     const params = {
         user_name: userName,
         selected_food: selectedFood,
-        booking_time: bookingTime, 
+        booking_time: bookingTime,
         location: location,
         user_email: userEmail,
         from_name: 'Chàng trai bí ẩn',
@@ -291,7 +289,7 @@ function sendMail() {
     const paramsMain = {
         user_name: userName,
         selected_food: selectedFood,
-        booking_time: bookingTime, 
+        booking_time: bookingTime,
         location: location,
         user_email: 'khoaletran709@gmail.com',
         from_name: 'Chàng trai bí ẩn',
@@ -299,13 +297,19 @@ function sendMail() {
 
     emailjs.send('khoaletran_709', 'template_ixeq81a', params)
     .then((response) => {
-        console.log('SUCCESS', response);
+        console.log('SUCCESS USER', response);
         return emailjs.send('khoaletran_709', 'template_ixeq81a', paramsMain);
+    })
+    .then((response) => {
+        console.log('SUCCESS ADMIN', response);
     })
     .catch((error) => {
         console.error('FAILED', error);
+        alert("Gửi mail thất bại! Kiểm tra lại EmailJS.");
     });
 }
+
+
 
 function openModal() {
     document.getElementById('videoModal').style.display = 'flex';
@@ -323,3 +327,40 @@ window.addEventListener('click', function() {
     const audio = document.getElementById("bg-music");
     audio.play();
 }, { once: true });
+
+const icons = [
+    "IMG/christmas-wreath.png",
+    "IMG/snowflake.png",
+    "IMG/gift-box.png",
+    "IMG/snowflake.png",
+    "IMG/santa-hat.png",
+    "IMG/snowflake.png"
+];
+
+function createFallingIcon() {
+    const icon = document.createElement("img");
+    icon.src = icons[Math.floor(Math.random() * icons.length)];
+    icon.className = "falling-icon";
+
+    icon.style.left = Math.random() * 100 + "vw";
+
+    const size = 20 + Math.random() * 25;
+    icon.style.width = size + "px";
+    icon.style.height = size + "px";
+
+    const duration = 3 + Math.random() * 4;
+    icon.style.animationDuration = duration + "s";
+
+    document.body.appendChild(icon);
+
+    setTimeout(() => {
+        icon.remove();
+    }, duration * 1000);
+}
+
+setInterval(() => {
+    const amount = 1 + Math.floor(Math.random() * 3);
+    for (let i = 0; i < amount; i++) {
+        createFallingIcon();
+    }
+}, 500);

@@ -4,42 +4,81 @@
     <meta charset="UTF-8">
     <title>Ai Biết...</title>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styleMC.css">
     <link rel="icon" href="IMG/logo.jpg" type="image/x-icon">
 </head>
+<img src="IMG/christmas-tree.png" class="corner-tree">
 <body>
 
   <div id="inviteStep" class="container">
     <div>
       <img src="IMG/hope.gif" style="max-width: 100%; height: auto; border-radius: 10px;">
     </div>
-    <h3>Bạn mời Người đẹp đi chơi 1 buổi nha</h3>
-    <button id="btnOk" onclick="startApp(true)">OK <br>( Bấm ở đây nè 😊 )</button>
-    <button id="btnNo" onclick="shrinkNo()">Hông 🥲</button>
+    <h3>Bạn có một lời mời nhỏ vào Noel dành cho Người đẹp nè 💖</h3>
+
+    <button id="btnOk" onclick="startApp(true)">
+    Đồng ý nè 🎄
+    </button>
+
+    <button id="btnNo" onclick="shrinkNo()">
+    Để… suy nghĩ 🤭
+    </button>
+
   </div>
 
-  <div class="container" id="mainApp" style="display: none;" >
+      <div class="container" id="mainApp" style="display: none;" >
 
-    <div id="step1">
-      <img src="IMG/hello.gif" class="gif">
-        <h2>Chào Người Đẹp 🥰</h2>
-        <input type="text" id="name" placeholder="Nhập tên của em nè..." onblur="validateName()">
+        <div id="step1">
+        <img src="IMG/hello.gif" class="gif">
+
+        <h2>Người đẹp tới rồi nè 🎀</h2>
+        <p style="margin-bottom: 12px;">
+            Trước khi anh gửi thiệp mời đặc biệt đêm Noel, cho anh xin vài thông tin nho nhỏ nha ✨
+        </p>
+
+        <input 
+            type="text" 
+            id="name" 
+            placeholder="Tên của em là gì nè…? 🎄" 
+            onblur="validateName()"
+        >
         <span id="nameError" class="error-message"></span>
-        <input type="email" id="email" placeholder="Nhập Gmail để nhập thiệp mời nhaa😊" onblur="validateEmail()">
+
+        <input 
+            type="email" 
+            id="email" 
+            placeholder="Gmail của em để anh gửi thiệp nha 💌" 
+            onblur="validateEmail()"
+        >
         <span id="emailError" class="error-message"></span>
-        <button onclick="goToStep2()">Bước tiếp theo nhen 💌</button>
+
+        <button onclick="goToStep2()">
+            Đi tiếp nào Người đẹp ❤️
+        </button>
     </div>
+
 
     <div id="step2">
-        <h2>Chọn hoạt động tụi mình sẽ cùng nhau nè 🎉</h2>
-        <div>
-          <img src="IMG/choose.gif" style="max-width: 60%; height: auto; border-radius: 10px;">
-        </div>
-        <div class="food-list" id="foodList"></div>
-        <button onclick="goToStep3()">Đi tiếp nào ➡️</button>
+    <h2>Giờ mình chọn hoạt động cho buổi hẹn Noel nha Người đẹp 🎄✨</h2>
+
+    <div>
+        <img src="IMG/choose.gif" style="max-width: 60%; height: auto; border-radius: 10px;">
     </div>
 
-    <div id="step3">
+    <p style="margin-top: 10px; font-size: 15px; color: #7c1121;">
+        Em thích buổi hẹn của tụi mình theo phong cách nào nè? 🎁
+    </p>
+
+    <div class="food-list" id="foodList"></div>
+
+    <button onclick="goToStep3()">
+        Chốt liền tay nè 💖
+    </button>
+</div>
+
+
+    <!-- <div id="step3">
         <h2>Chốt lịch thôi nèe! 📅✨</h2>
         <div>
           <img src="IMG/thanks.gif" style="max-width: 60%; height: auto; border-radius: 10px;">
@@ -48,10 +87,31 @@
         <span id="dateError" class="error-message"></span>
         <input type="time" id="time" placeholder="Chọn giờ tụi mình gặp nhau" onblur="validateTime()">
         <span id="timeError" class="error-message"></span>
+        <h3>Vậy Noel Bạn Rước Nhéeeeeee💖</h3>
+        <h4>25/12/2025</h4>
         <input type="text" id="location" placeholder="Nhập địa điểm để anh rước nhé....." onblur="validateLocation()">
         <span id="locationError" class="error-message"></span>
+        
         <button onclick="sendMail()">Xác Nhận💖</button>
-    </div>
+    </div> -->
+
+    <div id="step3" class="step-final">
+      <h2 class="final-title">Chốt lịch thôi nèe! 🎄✨</h2>
+
+      <div class="final-box">
+          <p class="final-text">Vậy Noel bạn rước nhéeeeee 💖</p>
+          <p class="final-date">🎅 25 / 12 / 2025 🎅</p>
+      </div>
+
+      <input type="text" id="location" 
+            class="final-input"
+            placeholder="Nhập địa điểm để anh rước nhé..." 
+            onblur="validateLocation()">
+
+      <span id="locationError" class="error-message"></span>
+
+      <button class="final-btn" onclick="sendMail()">Xác Nhận 💖</button>
+  </div>
 
     <div id="videoModal" class="modal">
       <div class="modal-content">

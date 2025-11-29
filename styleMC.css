@@ -1,0 +1,353 @@
+/* Nền chung Giáng Sinh */
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #022b3a, #14532d);
+    background-attachment: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 10px;
+    color: #1f2933;
+}
+
+/* Khung chính giống 1 tấm thiệp Noel */
+.container {
+    background: #ffffff;
+    padding: 30px 20px;
+    border-radius: 20px;
+    border: 3px solid #e11d48; /* viền đỏ */
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    width: 100%;
+    max-width: 420px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Viền trang trí hoa văn Giáng Sinh trên đầu khung */
+.container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -10%;
+    width: 120%;
+    height: 12px;
+    background: repeating-linear-gradient(
+        45deg,
+        #e11d48,
+        #e11d48 10px,
+        #facc15 10px,
+        #facc15 20px,
+        #16a34a 20px,
+        #16a34a 30px
+    );
+}
+
+/* Input, button, select chung */
+input, button, select {
+    width: 80%;
+    margin: 10px 0;
+    padding: 12px;
+    border: 1px solid #16a34a;
+    border-radius: 10px;
+    font-size: 16px;
+    box-sizing: border-box;
+    font-family: inherit;
+}
+
+/* Gif ảnh trong bước 1 */
+.gif {
+    width: 60%;
+    border-radius: 15px;
+    border: 3px solid #facc15;
+}
+
+/* Thông báo lỗi */
+.error-message {
+    color: #b91c1c;
+    font-size: 14px;
+    margin-top: 5px;
+    display: none;
+}
+
+/* Nút chung */
+button {
+    background: linear-gradient(135deg, #e11d48, #b91c1c);
+    color: #fff;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s, box-shadow 0.2s;
+    border: none;
+    font-weight: 600;
+}
+
+button:hover {
+    background: linear-gradient(135deg, #f97373, #e11d48);
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(250, 204, 21, 0.7);
+}
+
+/* Danh sách hoạt động (food-list) */
+.food-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 15px;
+    margin-top: 20px;
+}
+
+/* Item trong danh sách hoạt động */
+.food-item {
+    border: 3px solid #bbf7d0;
+    border-radius: 12px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+    background: #f9fafb;
+    position: relative;
+}
+
+/* “Ruy băng” nhỏ trên góc mỗi item */
+.food-item::before {
+    content: "🎄";
+    position: absolute;
+    top: 4px;
+    left: 6px;
+    font-size: 18px;
+}
+
+/* Ảnh trong item */
+.food-item img {
+    width: 100%;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 12px;
+    padding: 5px;
+}
+
+/* Hover item */
+.food-item:hover {
+    transform: scale(1.05);
+    border-color: #16a34a;
+    box-shadow: 0 0 10px rgba(22, 163, 74, 0.7);
+}
+
+/* Item được chọn */
+.selected {
+    border-color: #facc15 !important;
+    box-shadow: 0 0 15px rgba(250, 204, 21, 0.9);
+}
+
+/* Ẩn các bước 2,3 ban đầu */
+#step2, #step3 {
+    display: none;
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(15, 23, 42, 0.9); /* nền tối xanh đậm */
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+/* Nội dung Modal – khung quà Noel */
+.modal-content {
+    background-color: #ffffff;
+    position: relative;
+    width: 95%;
+    max-width: 380px;
+    border-radius: 18px;
+    overflow: hidden;
+    text-align: center;
+    animation: fadeIn 0.5s ease;
+    box-shadow: 0px 5px 20px rgba(0,0,0,0.4);
+    border: 3px solid #facc15;
+}
+
+/* Video */
+#loveVideo {
+    width: 75%;
+    border-radius: 0 0 18px 18px;
+    margin-top: 10px;
+}
+
+/* Text overlay trong modal */
+.text-overlay {
+    padding: 18px 12px 8px;
+    color: #b91c1c;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #fef3c7, #fee2e2);
+}
+
+.text-overlay h2 {
+    font-size: 20px;
+    margin: 0 0 5px;
+}
+
+.text-overlay h3 {
+    font-size: 15px;
+    font-weight: 500;
+    margin: 0;
+}
+
+/* Nút đóng modal */
+.close {
+    position: absolute;
+    top: 8px;
+    right: 12px;
+    font-size: 24px;
+    color: #b91c1c;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover {
+    color: #ef4444;
+    transform: scale(1.2);
+}
+
+/* Animation modal */
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.8); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+.falling-icon {
+    position: fixed;
+    top: -50px;
+    width: 32px;
+    height: 32px;
+    pointer-events: none;
+    animation: fall linear forwards;
+    z-index: 0;
+    opacity: 0.8;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(110vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* Responsive Mobile */
+@media (max-width: 480px) {
+    .container {
+        padding: 25px 15px;
+        max-width: 95%;
+    }
+
+    .modal-content {
+        width: 95%;
+        max-width: 340px;
+    }
+
+    .text-overlay h2 {
+        font-size: 18px;
+    }
+
+    .text-overlay h3 {
+        font-size: 14px;
+    }
+
+    .close {
+        font-size: 22px;
+    }
+}
+
+.corner-tree {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    width: 400px;          
+    max-width: 35vw;      
+    pointer-events: none; 
+    z-index: 1;           
+    opacity: 0.95;
+}
+
+/* ===== STEP 3 NOEL ===== */
+
+.step-final {
+    animation: fadeIn 0.6s ease;
+}
+
+.final-title {
+    color: #b91c1c;
+    margin-bottom: 15px;
+    font-size: 22px;
+}
+
+.final-box {
+    background: linear-gradient(135deg, #fef3c7, #fee2e2);
+    border: 2px dashed #e11d48;
+    border-radius: 14px;
+    padding: 15px;
+    margin-bottom: 15px;
+}
+
+.final-text {
+    font-size: 17px;
+    font-weight: 600;
+    color: #7c1121;
+    margin: 0 0 8px;
+}
+
+.final-date {
+    font-size: 20px;
+    font-weight: bold;
+    color: #14532d;
+    margin: 0;
+}
+
+.final-input {
+    width: 80%;
+    padding: 12px;
+    border-radius: 12px;
+    border: 2px solid #16a34a;
+    font-size: 16px;
+    outline: none;
+    margin-top: 10px;
+}
+
+.final-input:focus {
+    border-color: #facc15;
+    box-shadow: 0 0 8px rgba(250, 204, 21, 0.6);
+}
+
+.final-btn {
+    margin-top: 15px;
+    width: 85%;
+    padding: 12px;
+    font-size: 17px;
+    font-weight: bold;
+    border-radius: 14px;
+}
+
+h2, h3, h4, .final-title {
+    font-family: 'Pacifico', cursive;
+    letter-spacing: 1px;
+}
+
+.final-title {
+    color: #b91c1c;
+    font-size: 26px;
+}
+
+.final-text {
+    font-family: 'Pacifico', cursive;
+    font-size: 19px;
+}
+
+.final-date {
+    font-family: 'Pacifico', cursive;
+    font-size: 22px;
+}
